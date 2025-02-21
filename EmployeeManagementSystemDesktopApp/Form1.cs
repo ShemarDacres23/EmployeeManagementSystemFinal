@@ -24,6 +24,8 @@ namespace EmployeeManagementSystemDesktopApp
         private void loginTo_account_Click(object sender, EventArgs e)
         {
 
+            //Fake should be removed
+            InitializeComponent();
         }
 
         private void Exit_Click(object sender, EventArgs e)
