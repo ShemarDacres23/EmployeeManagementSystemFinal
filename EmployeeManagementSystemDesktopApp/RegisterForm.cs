@@ -15,7 +15,7 @@ namespace EmployeeManagementSystemDesktopApp
     public partial class RegisterForm : Form
     {
         //DATABASE
-        SqlConnection connect = new SqlConnection(@""); //DATABASE CONNECTION
+        SqlConnection connect = new SqlConnection(@"Data Source=DESKTOP-IKLBTJP\SQLEXPRESS24;Initial Catalog=EmployeeManagementSystem;Integrated Security=True;TrustServerCertificate=True"); //DATABASE CONNECTION
         public RegisterForm()
         {
             InitializeComponent();
@@ -55,7 +55,7 @@ namespace EmployeeManagementSystemDesktopApp
                         connect.Open();
 
                         //TO CHECK IF USER EXIST ALREADY
-                        string selectUsername = "SELECT COUNT (id) FROM users WHERE username = @user";
+                        string selectUsername = "SELECT COUNT (EmployeeID) FROM Employees WHERE Username = @user";
 
                         using (SqlCommand checkUser = new SqlCommand(selectUsername, connect))
                         {
@@ -71,7 +71,7 @@ namespace EmployeeManagementSystemDesktopApp
                             {
                                 DateTime today = DateTime.Today;
 
-                                    string insertData = "INSERT INTO users " + "(username, password, date_register)"
+                                    string insertData = "INSERT INTO Employees " + "(Username, PasswordHash, DateRegistered)"
                                     + "VALUES(@username, @password, @dateReg)";
 
                                 using (SqlCommand cmd = new SqlCommand(insertData, connect))
@@ -85,6 +85,7 @@ namespace EmployeeManagementSystemDesktopApp
                                     MessageBox.Show("Registerd successfully!", "Information Message",
                                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                                    //Brings up Login page after successfully registering
                                     Form1 loginForm = new Form1();
                                     loginForm.Show();
                                     this.Hide();

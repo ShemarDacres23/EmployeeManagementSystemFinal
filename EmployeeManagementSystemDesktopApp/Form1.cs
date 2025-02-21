@@ -74,5 +74,10 @@ namespace EmployeeManagementSystemDesktopApp
             regForm.Show();
             this.Hide();
         }
+
+        private void login_password_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
