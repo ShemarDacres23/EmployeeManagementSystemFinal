@@ -22,5 +22,16 @@ namespace EmployeeManagementSystemDesktopApp.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-IKLBTJP\\SQLEXPRESS24;Initial Catalog=EmployeeManagementSystem" +
+            ";Integrated Security=True;Encrypt=True;TrustServerCertificate=True")]
+        public string EmployeeManagementSystemConnectionString {
+            get {
+                return ((string)(this["EmployeeManagementSystemConnectionString"]));
+            }
+        }
     }
 }

@@ -71,14 +71,16 @@ namespace EmployeeManagementSystemDesktopApp
                             {
                                 DateTime today = DateTime.Today;
 
-                                    string insertData = "INSERT INTO Employees " + "(Username, PasswordHash, DateRegistered)"
-                                    + "VALUES(@username, @password, @dateReg)";
+                                    string insertData = "INSERT INTO Employees " + "(Username, PasswordHash, DateRegistered, Roles, Status)"
+                                    + "VALUES(@username, @password, @dateReg, @roles, @status)";
 
                                 using (SqlCommand cmd = new SqlCommand(insertData, connect))
                                 {
                                     cmd.Parameters.AddWithValue("@username", signup_username.Text.Trim());
                                     cmd.Parameters.AddWithValue("@password", signup_password.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@dateReg", today);
+                                    cmd.Parameters.AddWithValue("@dateReg", today); 
+                                    cmd.Parameters.AddWithValue("@roles", "Staff");
+                                    cmd.Parameters.AddWithValue("@status", "Active");
 
                                     cmd.ExecuteNonQuery();
 

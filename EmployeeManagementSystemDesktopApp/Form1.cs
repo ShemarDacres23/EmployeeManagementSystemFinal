@@ -15,7 +15,7 @@ namespace EmployeeManagementSystemDesktopApp
     public partial class Form1 : Form
     {
         //DATABASE
-        SqlConnection connect = new SqlConnection(@""); //DATABASE CONNECTION
+        SqlConnection connect = new SqlConnection(@"Data Source=DESKTOP-IKLBTJP\SQLEXPRESS24;Initial Catalog=EmployeeManagementSystem;Integrated Security=True;TrustServerCertificate=True"); //DATABASE CONNECTION
         public Form1()
         {
             InitializeComponent();
@@ -66,7 +66,51 @@ namespace EmployeeManagementSystemDesktopApp
             }
             else
             {
+                if(connect.State == ConnectionState.Closed)
+                {
+                    try
+                    {
+                        connect.Open();
+                        string selectData = "SELECT * FROM Employees WHERE (Username = @username" +
+                            " AND PasswordHash = @password) AND Status = @status";
 
+                        using(SqlCommand cmd = new SqlCommand(selectData, connect))
+                        {
+                            cmd.Parameters.AddWithValue("@username", login_username.Text.Trim());
+                            cmd.Parameters.AddWithValue("@password", login_password.Text.Trim());
+                            cmd.Parameters.AddWithValue("@status", "Active");
+
+                            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                            DataTable table = new DataTable();
+                            adapter.Fill(table);
+
+                            if(table.Rows.Count >= 1)
+                            {
+                                MessageBox.Show("Login successfully!", "Information Message", 
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                MainForm adminForm = new MainForm();
+                                adminForm.Show();
+                            } 
+                            else
+                            {
+                                MessageBox.Show("Incorrect Username/Password", "Error Message",
+                                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex,
+                            "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+                    finally
+                    {
+                        connect.Close();
+                    }
+                }
+               
             }
         }
 
@@ -80,6 +124,11 @@ namespace EmployeeManagementSystemDesktopApp
         private void login_password_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
