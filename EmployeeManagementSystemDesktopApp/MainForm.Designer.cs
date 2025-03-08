@@ -1,4 +1,6 @@
-﻿namespace EmployeeManagementSystemDesktopApp
+﻿using System;
+
+namespace EmployeeManagementSystemDesktopApp
 {
     partial class MainForm
     {
@@ -188,7 +190,7 @@
             // 
             // adminSalaryForm1
             // 
-            this.adminSalaryForm1.Location = new System.Drawing.Point(222, 47);
+            this.adminSalaryForm1.Location = new System.Drawing.Point(225, 47);
             this.adminSalaryForm1.Name = "adminSalaryForm1";
             this.adminSalaryForm1.Size = new System.Drawing.Size(875, 553);
             this.adminSalaryForm1.TabIndex = 2;
@@ -206,6 +208,7 @@
             this.adminDashBoard1.Name = "adminDashBoard1";
             this.adminDashBoard1.Size = new System.Drawing.Size(875, 553);
             this.adminDashBoard1.TabIndex = 4;
+            this.adminDashBoard1.Load += new System.EventHandler(this.adminDashBoard1_Load);
             // 
             // MainForm
             // 
@@ -228,6 +231,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+           // throw new NotImplementedException();
         }
 
         #endregion

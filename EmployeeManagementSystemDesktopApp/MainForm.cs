@@ -32,18 +32,20 @@ namespace EmployeeManagementSystemDesktopApp
 
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        //Dashbord Buuton
         private void button1_Click(object sender, EventArgs e)
         {
-            /*
+            
             adminDashBoard1.Visible = true;
             adminAddEmployee1.Visible = false;
             adminSalaryForm1.Visible = false;
-            */
+
+            adminDashBoard dashForm = adminDashBoard1 as adminDashBoard;
+            
+            if(dashForm !=  null)
+            {
+                dashForm.RefreshData();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -79,6 +81,13 @@ namespace EmployeeManagementSystemDesktopApp
             adminDashBoard1.Visible = false;
             adminAddEmployee1.Visible = true;
             adminSalaryForm1.Visible = false;
+
+            adminAddEmployee adEmpForm = adminAddEmployee1 as adminAddEmployee;
+
+            if(adEmpForm != null)
+            {
+                adEmpForm.RefreshData();
+            }
             
         }
 
@@ -87,6 +96,18 @@ namespace EmployeeManagementSystemDesktopApp
             adminDashBoard1.Visible = false;
             adminAddEmployee1.Visible = false;
             adminSalaryForm1.Visible = true;
+
+            adminSalaryForm salaryForm = adminSalaryForm1 as adminSalaryForm;
+
+            if (salaryForm != null)
+            {
+                salaryForm.RefreshData();
+            }
+        }
+
+        private void adminDashBoard1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

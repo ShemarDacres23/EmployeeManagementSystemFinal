@@ -59,5 +59,15 @@ namespace EmployeeManagementSystemDesktopApp.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap grocery_store_renovation_1200x600 {
+            get {
+                object obj = ResourceManager.GetObject("grocery-store-renovation-1200x600", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

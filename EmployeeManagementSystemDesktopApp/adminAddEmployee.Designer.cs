@@ -35,6 +35,9 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.employeesInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.employeeManagementSystemDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.employeeManagementSystemDataSet = new EmployeeManagementSystemDesktopApp.EmployeeManagementSystemDataSet();
             this.panel2 = new System.Windows.Forms.Panel();
             this.addEmployeePhoneNumber = new System.Windows.Forms.TextBox();
             this.employeephoneNumber = new System.Windows.Forms.Label();
@@ -55,27 +58,14 @@
             this.addEmployee_ID = new System.Windows.Forms.TextBox();
             this.empID = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.employeeManagementSystemDataSet = new EmployeeManagementSystemDesktopApp.EmployeeManagementSystemDataSet();
-            this.employeeManagementSystemDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.employeesInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.employeesInfoTableAdapter = new EmployeeManagementSystemDesktopApp.EmployeeManagementSystemDataSetTableAdapters.EmployeesInfoTableAdapter();
-            this.empidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fullnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contactnumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.positionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salaryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.insertdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.updatedateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deletedateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataGridView.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeManagementSystemDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeManagementSystemDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeesInfoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeManagementSystemDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeManagementSystemDataSet)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // DataGridView
@@ -102,33 +92,18 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.empidDataGridViewTextBoxColumn,
-            this.fullnameDataGridViewTextBoxColumn,
-            this.genderDataGridViewTextBoxColumn,
-            this.contactnumberDataGridViewTextBoxColumn,
-            this.positionDataGridViewTextBoxColumn,
-            this.salaryDataGridViewTextBoxColumn,
-            this.statusDataGridViewTextBoxColumn,
-            this.insertdateDataGridViewTextBoxColumn,
-            this.updatedateDataGridViewTextBoxColumn,
-            this.deletedateDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.employeesInfoBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(831, 191);
+            this.dataGridView1.Size = new System.Drawing.Size(837, 196);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // comboBox3
             // 
@@ -151,6 +126,21 @@
             this.label5.Size = new System.Drawing.Size(47, 15);
             this.label5.TabIndex = 10;
             this.label5.Text = "Status";
+            // 
+            // employeesInfoBindingSource
+            // 
+            this.employeesInfoBindingSource.DataMember = "EmployeesInfo";
+            this.employeesInfoBindingSource.DataSource = this.employeeManagementSystemDataSetBindingSource;
+            // 
+            // employeeManagementSystemDataSetBindingSource
+            // 
+            this.employeeManagementSystemDataSetBindingSource.DataSource = this.employeeManagementSystemDataSet;
+            this.employeeManagementSystemDataSetBindingSource.Position = 0;
+            // 
+            // employeeManagementSystemDataSet
+            // 
+            this.employeeManagementSystemDataSet.DataSetName = "EmployeeManagementSystemDataSet";
+            this.employeeManagementSystemDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // panel2
             // 
@@ -286,6 +276,7 @@
             this.EmployeeStatus.Name = "EmployeeStatus";
             this.EmployeeStatus.Size = new System.Drawing.Size(176, 28);
             this.EmployeeStatus.TabIndex = 24;
+            this.EmployeeStatus.SelectedIndexChanged += new System.EventHandler(this.EmployeeStatus_SelectedIndexChanged);
             // 
             // epmStatus
             // 
@@ -382,6 +373,7 @@
             this.addEmployee_ID.Name = "addEmployee_ID";
             this.addEmployee_ID.Size = new System.Drawing.Size(176, 26);
             this.addEmployee_ID.TabIndex = 16;
+            this.addEmployee_ID.TextChanged += new System.EventHandler(this.addEmployee_ID_TextChanged);
             // 
             // empID
             // 
@@ -403,94 +395,9 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Employee\'s Data";
             // 
-            // employeeManagementSystemDataSet
-            // 
-            this.employeeManagementSystemDataSet.DataSetName = "EmployeeManagementSystemDataSet";
-            this.employeeManagementSystemDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // employeeManagementSystemDataSetBindingSource
-            // 
-            this.employeeManagementSystemDataSetBindingSource.DataSource = this.employeeManagementSystemDataSet;
-            this.employeeManagementSystemDataSetBindingSource.Position = 0;
-            // 
-            // employeesInfoBindingSource
-            // 
-            this.employeesInfoBindingSource.DataMember = "EmployeesInfo";
-            this.employeesInfoBindingSource.DataSource = this.employeeManagementSystemDataSetBindingSource;
-            // 
             // employeesInfoTableAdapter
             // 
             this.employeesInfoTableAdapter.ClearBeforeFill = true;
-            // 
-            // empidDataGridViewTextBoxColumn
-            // 
-            this.empidDataGridViewTextBoxColumn.DataPropertyName = "emp_id";
-            this.empidDataGridViewTextBoxColumn.HeaderText = "emp_id";
-            this.empidDataGridViewTextBoxColumn.Name = "empidDataGridViewTextBoxColumn";
-            this.empidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fullnameDataGridViewTextBoxColumn
-            // 
-            this.fullnameDataGridViewTextBoxColumn.DataPropertyName = "full_name";
-            this.fullnameDataGridViewTextBoxColumn.HeaderText = "full_name";
-            this.fullnameDataGridViewTextBoxColumn.Name = "fullnameDataGridViewTextBoxColumn";
-            this.fullnameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // genderDataGridViewTextBoxColumn
-            // 
-            this.genderDataGridViewTextBoxColumn.DataPropertyName = "gender";
-            this.genderDataGridViewTextBoxColumn.HeaderText = "gender";
-            this.genderDataGridViewTextBoxColumn.Name = "genderDataGridViewTextBoxColumn";
-            this.genderDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // contactnumberDataGridViewTextBoxColumn
-            // 
-            this.contactnumberDataGridViewTextBoxColumn.DataPropertyName = "contact_number";
-            this.contactnumberDataGridViewTextBoxColumn.HeaderText = "contact_number";
-            this.contactnumberDataGridViewTextBoxColumn.Name = "contactnumberDataGridViewTextBoxColumn";
-            this.contactnumberDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // positionDataGridViewTextBoxColumn
-            // 
-            this.positionDataGridViewTextBoxColumn.DataPropertyName = "position";
-            this.positionDataGridViewTextBoxColumn.HeaderText = "position";
-            this.positionDataGridViewTextBoxColumn.Name = "positionDataGridViewTextBoxColumn";
-            this.positionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // salaryDataGridViewTextBoxColumn
-            // 
-            this.salaryDataGridViewTextBoxColumn.DataPropertyName = "salary";
-            this.salaryDataGridViewTextBoxColumn.HeaderText = "salary";
-            this.salaryDataGridViewTextBoxColumn.Name = "salaryDataGridViewTextBoxColumn";
-            this.salaryDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "status";
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // insertdateDataGridViewTextBoxColumn
-            // 
-            this.insertdateDataGridViewTextBoxColumn.DataPropertyName = "insert_date";
-            this.insertdateDataGridViewTextBoxColumn.HeaderText = "insert_date";
-            this.insertdateDataGridViewTextBoxColumn.Name = "insertdateDataGridViewTextBoxColumn";
-            this.insertdateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // updatedateDataGridViewTextBoxColumn
-            // 
-            this.updatedateDataGridViewTextBoxColumn.DataPropertyName = "update_date";
-            this.updatedateDataGridViewTextBoxColumn.HeaderText = "update_date";
-            this.updatedateDataGridViewTextBoxColumn.Name = "updatedateDataGridViewTextBoxColumn";
-            this.updatedateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // deletedateDataGridViewTextBoxColumn
-            // 
-            this.deletedateDataGridViewTextBoxColumn.DataPropertyName = "delete_date";
-            this.deletedateDataGridViewTextBoxColumn.HeaderText = "delete_date";
-            this.deletedateDataGridViewTextBoxColumn.Name = "deletedateDataGridViewTextBoxColumn";
-            this.deletedateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // adminAddEmployee
             // 
@@ -505,11 +412,11 @@
             this.DataGridView.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeesInfoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeManagementSystemDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeManagementSystemDataSet)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeManagementSystemDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeManagementSystemDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeesInfoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -546,15 +453,5 @@
         private EmployeeManagementSystemDataSet employeeManagementSystemDataSet;
         private System.Windows.Forms.BindingSource employeesInfoBindingSource;
         private EmployeeManagementSystemDataSetTableAdapters.EmployeesInfoTableAdapter employeesInfoTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn empidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fullnameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn genderDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contactnumberDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn positionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn salaryDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn insertdateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn updatedateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn deletedateDataGridViewTextBoxColumn;
     }
 }
