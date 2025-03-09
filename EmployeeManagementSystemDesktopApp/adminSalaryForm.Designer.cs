@@ -42,6 +42,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.generatePaySlipBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -50,6 +51,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.generatePaySlipBtn);
             this.panel1.Controls.Add(this.salaryClearBtn);
             this.panel1.Controls.Add(this.salaryUpdateBtn);
             this.panel1.Controls.Add(this.salaryEmpoyee);
@@ -191,6 +193,20 @@
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // generatePaySlipBtn
+            // 
+            this.generatePaySlipBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(86)))), ((int)(((byte)(179)))));
+            this.generatePaySlipBtn.FlatAppearance.BorderSize = 0;
+            this.generatePaySlipBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.generatePaySlipBtn.ForeColor = System.Drawing.Color.White;
+            this.generatePaySlipBtn.Location = new System.Drawing.Point(71, 378);
+            this.generatePaySlipBtn.Name = "generatePaySlipBtn";
+            this.generatePaySlipBtn.Size = new System.Drawing.Size(97, 43);
+            this.generatePaySlipBtn.TabIndex = 30;
+            this.generatePaySlipBtn.Text = "Generate PaySlip";
+            this.generatePaySlipBtn.UseVisualStyleBackColor = false;
+            this.generatePaySlipBtn.Click += new System.EventHandler(this.generatePaySlipBtn_Click);
+            // 
             // adminSalaryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -222,5 +238,6 @@
         private System.Windows.Forms.Button salaryClearBtn;
         private System.Windows.Forms.Button salaryUpdateBtn;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button generatePaySlipBtn;
     }
 }

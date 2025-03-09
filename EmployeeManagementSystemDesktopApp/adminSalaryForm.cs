@@ -72,12 +72,41 @@ namespace EmployeeManagementSystemDesktopApp
                             connect.Open();
                             DateTime today = DateTime.Today;
 
-                            string updateData = "UPDATE EmployeesInfo SET salary = @salary" +
-                            ", update_date = @updateDate WHERE emp_id = @EmployeeID ";
+                            // Get the salary from the input
+                            decimal salary = Convert.ToDecimal(salaryEmpoyee.Text.Trim());
 
-                            using (SqlCommand cmd = new SqlCommand (updateData, connect))
+                            // Calculate deductions
+                            decimal educationTax = salary * 0.025m; // 2.5% of salary
+                            decimal nht = salary * 0.03m; // 3% of salary
+                            decimal nis = salary * 0.05m; // 5% of salary
+
+                            // Calculate net salary after deductions
+                            decimal netSalary = salary - educationTax - nht - nis;
+
+                            // Create and print Pay Slip
+                            PaySlipPrinter paySlip = new PaySlipPrinter(
+                                salaryEmployeeID.Text,
+                                salaryEmployeeName.Text,
+                                salaryEmployeeePosition.Text,
+                                salary,
+                                educationTax,
+                                nht,
+                                nis,
+                                netSalary
+                            );
+
+                            paySlip.PrintPaySlip();
+
+                            // Update the database with the new salary
+                            string updateData = "UPDATE EmployeesInfo SET salary = @salary, net_salary = @netSalary, education_tax = @educationTax, nht = @nht, nis = @nis, update_date = @updateDate WHERE emp_id = @EmployeeID ";
+
+                            using (SqlCommand cmd = new SqlCommand(updateData, connect))
                             {
-                                cmd.Parameters.AddWithValue("@salary", salaryEmpoyee.Text.Trim());
+                                cmd.Parameters.AddWithValue("@salary", salary);
+                                cmd.Parameters.AddWithValue("@netSalary", netSalary);
+                                cmd.Parameters.AddWithValue("@educationTax", educationTax);
+                                cmd.Parameters.AddWithValue("@nht", nht);
+                                cmd.Parameters.AddWithValue("@nis", nis);
                                 cmd.Parameters.AddWithValue("@updateDate", today);
                                 cmd.Parameters.AddWithValue("@EmployeeID", salaryEmployeeID.Text.Trim());
 
@@ -175,6 +204,29 @@ namespace EmployeeManagementSystemDesktopApp
         private void salaryEmployeeID_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void generatePaySlipBtn_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(salaryEmployeeID.Text) || string.IsNullOrEmpty(salaryEmployeeName.Text) ||
+                string.IsNullOrEmpty(salaryEmployeeePosition.Text) || string.IsNullOrEmpty(salaryEmpoyee.Text))
+            {
+                MessageBox.Show("Please select an employee first!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            decimal salary = Convert.ToDecimal(salaryEmpoyee.Text.Trim());
+            decimal educationTax = salary * 0.025m;
+            decimal nht = salary * 0.03m;
+            decimal nis = salary * 0.05m;
+            decimal netSalary = salary - (educationTax + nht + nis);
+
+            PaySlipPrinter paySlip = new PaySlipPrinter(
+                salaryEmployeeID.Text, salaryEmployeeName.Text, salaryEmployeeePosition.Text,
+                salary, educationTax, nht, nis, netSalary
+            );
+
+            paySlip.PrintPaySlip();
         }
     }
 }

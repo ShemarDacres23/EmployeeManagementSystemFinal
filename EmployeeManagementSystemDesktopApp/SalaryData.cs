@@ -21,7 +21,9 @@ namespace EmployeeManagementSystemDesktopApp
             {
                 using (SqlConnection connect = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT emp_id, full_name, position, salary FROM EmployeesInfo WHERE delete_date IS NULL";
+                    string query = "SELECT emp_id, full_name, position, salary, education_tax, nht, nis, net_salary FROM EmployeesInfo WHERE delete_date IS NULL";
+                    //SELECT 
+
                     using (SqlDataAdapter adapter = new SqlDataAdapter(query, connect))
                     {
                         connect.Open();
